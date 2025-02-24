@@ -1,15 +1,10 @@
-import { Ai } from '@cloudflare/ai'
 import { Hono } from 'hono'
 const app = new Hono()
-
-export interface Env {
-    AI: Ai
-}
 
 /**
  * Chat
  */
-app.get('/', async (c: any) => {
+app.get('/', async (c) => {
     const { text } = c.req.query()
 
     if (!text) {
@@ -31,7 +26,7 @@ app.get('/', async (c: any) => {
 /**
  * Summarization
  */
-app.get('/summarize', async (c: any) => {
+app.get('/summarize', async (c) => {
     const { text } = c.req.query()
 
     if (!text) {
