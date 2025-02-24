@@ -1,10 +1,5 @@
-import { Ai } from '@cloudflare/ai'
 import { Hono } from 'hono'
 const app = new Hono()
-
-export interface Env {
-    AI: Ai
-}
 
 /**
  * Chat
