@@ -1,27 +1,27 @@
 {
-	"name": "cloudflare-ai",
-	"version": "0.0.0",
-	"private": true,
-	"scripts": {
-		"deploy": "wrangler deploy",
-		"dev": "wrangler dev",
-		"start": "wrangler dev",
-		"test": "vitest",
-		"cf-typegen": "wrangler types",
-		"lint": "npx @biomejs/biome lint ./src",
-		"format": "npx @biomejs/biome format --write ."
-	},
-	"devDependencies": {
-		"@biomejs/biome": "1.9.4",
-		"@cloudflare/vitest-pool-workers": "^0.6.4",
-		"@cloudflare/workers-types": "^4.20250214.0",
-		"typescript": "^5.5.2",
-		"vitest": "~2.1.9",
-		"wrangler": "^3.109.2"
-	},
-	"dependencies": {
-		"@cloudflare/ai": "^1.2.2",
-		"base64-js": "^1.5.1",
-		"hono": "^4.7.2"
-	}
+    "name": "cloudflare-ai",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+        "deploy": "wrangler deploy",
+        "dev": "wrangler dev",
+        "start": "wrangler dev",
+        "test": "vitest",
+        "cf-typegen": "wrangler types",
+        "lint": "npx @biomejs/biome lint ./src",
+        "format": "npx @biomejs/biome format --write ."
+    },
+    "devDependencies": {
+        "@biomejs/biome": "1.9.4",
+        "@cloudflare/vitest-pool-workers": "^0.6.4",
+        "@cloudflare/workers-types": "^4.20250214.0",
+        "typescript": "^5.5.2",
+        "vitest": "~2.1.9",
+        "wrangler": "^3.109.2"
+    },
+    "dependencies": {
+        "@cloudflare/ai": "^1.2.2",
+        "base64-js": "^1.5.1",
+        "hono": "^4.7.2"
+    }
 }
