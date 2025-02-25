@@ -41,4 +41,25 @@ app.get('/summarize', async (c) => {
     return c.json(response)
 })
 
+/**
+ * Text to Image
+ */
+app.get('/image', async (c) => {
+    const { text } = c.req.query()
+
+    if (!text) {
+        return c.text('Missing text', 400)
+    }
+
+    const response = await c.env.AI.run('@cf/lykon/dreamshaper-8-lcm', {
+        prompt: text,
+    })
+
+    return new Response(response, {
+        headers: {
+          "content-type": "image/jpg",
+        },
+    })
+})
+
 export default app
