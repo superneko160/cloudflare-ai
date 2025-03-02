@@ -62,4 +62,21 @@ app.get('/image', async (c) => {
     })
 })
 
+/**
+ * Text Classification
+ */
+app.get('/text-classification', async (c) => {
+    const { text } = c.req.query()
+
+    if (!text) {
+        return c.text('Missing text', 400)
+    }
+
+    const response = await c.env.AI.run('@cf/huggingface/distilbert-sst-2-int8', {
+        text: text,
+    })
+
+    return c.json(response)
+})
+
 export default app
