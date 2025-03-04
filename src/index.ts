@@ -4,7 +4,7 @@ const app = new Hono()
 /**
  * Chat
  */
-app.get('/', async (c) => {
+app.get('/', async c => {
     const { text } = c.req.query()
 
     if (!text) {
@@ -26,7 +26,7 @@ app.get('/', async (c) => {
 /**
  * Summarization
  */
-app.get('/summarize', async (c) => {
+app.get('/summarize', async c => {
     const { text } = c.req.query()
 
     if (!text) {
@@ -44,7 +44,7 @@ app.get('/summarize', async (c) => {
 /**
  * Text to Image
  */
-app.get('/image', async (c) => {
+app.get('/image', async c => {
     const { text } = c.req.query()
 
     if (!text) {
@@ -57,7 +57,7 @@ app.get('/image', async (c) => {
 
     return new Response(response, {
         headers: {
-          "content-type": "image/jpg",
+            'content-type': 'image/jpg',
         },
     })
 })
@@ -65,7 +65,7 @@ app.get('/image', async (c) => {
 /**
  * Text Classification
  */
-app.get('/text-classification', async (c) => {
+app.get('/text-classification', async c => {
     const { text } = c.req.query()
 
     if (!text) {
@@ -77,6 +77,26 @@ app.get('/text-classification', async (c) => {
     })
 
     return c.json(response)
+})
+
+/**
+ * Image Classification
+ */
+app.get('/image-classification', async c => {
+    try {
+        // 猫の画像をランダムで取得
+        const res = await fetch('https://cataas.com/cat')
+        const blob = await res.arrayBuffer()
+
+        const response = await c.env.AI.run('@cf/microsoft/resnet-50', {
+            image: [...new Uint8Array(blob)],
+        })
+
+        return c.json(response)
+    } catch (e) {
+        console.error(e)
+        return c.text('Image Classification Failed', 500)
+    }
 })
 
 export default app
