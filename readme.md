@@ -56,6 +56,16 @@ http://127.0.0.1:8787/image-classification
 
 Model: [microsoft/resnet-50](https://developers.cloudflare.com/workers-ai/models/resnet-50/)
 
+## Automatic Speech Recognition
+
+音声を認識し、テキスト化。また、単語ごとに区切り、その単語の開始位置と終了位置を返す
+
+```
+http://127.0.0.1:8787/speech-recognition
+```
+
+Model: [openai/whisper](https://developers.cloudflare.com/workers-ai/models/whisper/)
+
 ## Reference
 
 - [Workers AI - Cloudflare Workers AI docs](https://developers.cloudflare.com/workers-ai/)
