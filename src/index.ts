@@ -99,4 +99,24 @@ app.get('/image-classification', async c => {
     }
 })
 
+/**
+ * Automatic Speech Recognition
+ */
+app.get('/speech-recognition', async c => {
+    try {
+        // 音声データを取得
+        const res = await fetch('https://github.com/Azure-Samples/cognitive-services-speech-sdk/raw/master/samples/cpp/windows/console/samples/enrollment_audio_katie.wav')
+        const blob = await res.arrayBuffer()
+
+        const response = await c.env.AI.run('@cf/openai/whisper', {
+            audio: [...new Uint8Array(blob)],
+        })
+
+        return c.json(response)
+    } catch (e) {
+        console.error(e)
+        return c.text('Image Classification Failed', 500)
+    }
+})
+
 export default app
