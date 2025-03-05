@@ -46,7 +46,7 @@ http://127.0.0.1:8787/text-classification?text={text}
 
 Model: [huggingface/distilbert-sst-2-int8](https://developers.cloudflare.com/workers-ai/models/distilbert-sst-2-int8/)
 
-## Image Classification
+### Image Classification
 
 分類したラベルと、そのラベルの信頼度を返す
 
@@ -56,7 +56,7 @@ http://127.0.0.1:8787/image-classification
 
 Model: [microsoft/resnet-50](https://developers.cloudflare.com/workers-ai/models/resnet-50/)
 
-## Automatic Speech Recognition
+### Automatic Speech Recognition
 
 音声を認識し、テキスト化。また、単語ごとに区切り、その単語の開始位置と終了位置を返す
 
